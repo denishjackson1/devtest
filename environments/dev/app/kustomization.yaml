@@ -1,0 +1,69 @@
+namespace: dev
+replicas:
+  - name: todo-deployment
+    count: 1
+images:
+  - name: denishjackson/todo-test
+    newTag: v0.1.1
+resources:
+  - ../../../base
+
+patches:
+
+  - target:
+      kind: Deployment
+      name: todo-deployment
+    patch: |
+      - op: replace
+        path: /spec/template/spec/containers/0/env/1/value
+        value: "3100"
+
+  - target:
+      kind: Service
+      name: todo-service
+    patch: |
+      - op: replace
+        path: /spec/ports/0/port
+        value: 3100
+      
+  - target:
+      kind: Deployment
+      name: postgres
+    patch: |
+      - op: replace
+        path: /spec/template/spec/volumes/0/persistentVolumeClaim/claimName
+        value: postgres-pvc-dev
+
+  - target:
+      kind: PersistentVolume
+      name: postgres-pv
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: postgres-pv-dev
+      
+      - op: replace
+        path: /metadata/labels/name
+        value: dev
+      
+      - op: replace
+        path: /metadata/labels/environment
+        value: dev
+
+      - op: replace
+        path: /spec/hostPath/path
+        value: "/home/denish/pv/dev"
+  
+  - target:
+      kind: PersistentVolumeClaim
+      name: postgres-pvc
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: postgres-pvc-dev
+
+      - op: replace
+        path: /spec/volumeName
+        value: postgres-pv-dev
+
+  

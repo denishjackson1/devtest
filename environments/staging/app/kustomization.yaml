@@ -1,0 +1,69 @@
+namespace: staging
+replicas:
+  - name: todo-deployment
+    count: 1
+images:
+  - name: denishjackson/todo-test
+    newTag: v-4661ec6
+resources:
+  - ../../../base
+  
+patches:
+
+  - target:
+      kind: Deployment
+      name: todo-deployment
+    patch: |
+      - op: replace
+        path: /spec/template/spec/containers/0/env/1/value
+        value: "3200"
+
+  - target:
+      kind: Service
+      name: todo-service
+    patch: |
+      - op: replace
+        path: /spec/ports/0/port
+        value: 3200
+  - target:
+      kind: Deployment
+      name: postgres
+    patch: |
+      - op: replace
+        path: /spec/template/spec/volumes/0/persistentVolumeClaim/claimName
+        value: postgres-pvc-staging
+        
+  - target:
+      kind: PersistentVolume
+      name: postgres-pv
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: postgres-pv-staging
+      
+      - op: replace
+        path: /metadata/labels/name
+        value: staging
+      
+      - op: replace
+        path: /metadata/labels/environment
+        value: staging
+
+      - op: replace
+        path: /spec/hostPath/path
+        value: "/home/denish/pv/staging" 
+
+  - target:
+      kind: PersistentVolumeClaim
+      name: postgres-pvc
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: postgres-pvc-staging
+
+      - op: replace
+        path: /spec/volumeName
+        value: postgres-pv-staging
+
+
+# thisis testing
