@@ -7,6 +7,6 @@ metadata:
 spec:
   selector:
     app: todo
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 3000
