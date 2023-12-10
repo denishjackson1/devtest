@@ -4,7 +4,7 @@ metadata:
   name: todo-app-staging
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: denishjackson/todo-test:~v-
+    argocd-image-updater.argoproj.io/image-list: denishjackson/todo-test:latest
     argocd-image-updater.argoproj.io/write-back-method: git
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,8 +12,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/denishjackson1/devops-CRDS.git
-    targetRevision: staging # branch to track
-    path: environments/staging/app
+    targetRevision: main # branch to track
+    path: environments/main/app
   destination:
     server: https://kubernetes.default.svc 
   syncPolicy:

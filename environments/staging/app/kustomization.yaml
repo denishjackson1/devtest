@@ -64,6 +64,3 @@ patches:
       - op: replace
         path: /spec/volumeName
         value: postgres-pv-staging
-
-
-# thisis testing
