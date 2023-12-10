@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/denishjackson1/devtest.git
     targetRevision: main # branch to track
-    path: environments/main/app
+    path: environments/staging/app
   destination:
     server: https://kubernetes.default.svc 
   syncPolicy:
