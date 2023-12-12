@@ -6,6 +6,7 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: denishjackson/todo-test:~2b4462c
     argocd-image-updater.argoproj.io/write-back-method: git
+    # argocd-image-updater.argoproj.io/update-strategy: latest
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
