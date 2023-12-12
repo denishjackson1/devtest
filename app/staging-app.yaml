@@ -27,4 +27,4 @@ spec:
       - CreateNamespace=false
       - PrunePropagationPolicy=foreground
       - PruneLast=true
-    syncInterval: 1m
+  syncInterval: 5m
