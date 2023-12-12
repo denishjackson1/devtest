@@ -2,8 +2,8 @@ namespace: staging
 replicas:
   - name: todo-deployment
     count: 1
-# images:
-#   - name: denishjackson/todo-test
+images:
+  - name: denishjackson/todo-test
 #     newTag: 2b4462c
 resources:
   - ../../../base
