@@ -4,7 +4,7 @@ metadata:
   name: todo-app-staging
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: denishjackson/todo-test:~^[0-9a-f]{7}$
+    argocd-image-updater.argoproj.io/image-list: "denishjackson/todo-test:[0-9]{14}$"
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/update-strategy: latest
   finalizers:
