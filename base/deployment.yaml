@@ -16,6 +16,7 @@ spec:
       containers:
       - name: todo
         image: denishjackson/todo-test
+        imagePullPolicy: Always
         env:
         - name: NODE_ENV
           value: "development"
