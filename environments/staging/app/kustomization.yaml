@@ -4,7 +4,7 @@ replicas:
     count: 1
 images:
   - name: denishjackson/todo-test
-    newTag: 06ea467
+    # newTag: 06ea467
 resources:
   - ../../../base
   
