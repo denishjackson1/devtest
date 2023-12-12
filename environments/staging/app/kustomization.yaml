@@ -3,8 +3,8 @@ replicas:
   - name: todo-deployment
     count: 1
 images:
-  - name: denishjackson/todo-test
-    newTag: 20231212174645
+  - name: denishjackson/todo-test:20231212174645
+    # newTag: "20231212174645"
 resources:
   - ../../../base
   
