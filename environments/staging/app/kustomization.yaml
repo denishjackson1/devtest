@@ -4,7 +4,7 @@ replicas:
     count: 1
 images:
   - name: denishjackson/todo-test
-    newTag: "20231212174645"
+    newTag: v1
 resources:
   - ../../../base
   
